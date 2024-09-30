@@ -28,18 +28,21 @@ const store=new MongoStore({
   }
 })
 
-const sessionConfig={
+const sessionConfig = {
   store,
-  name:'session',
+  name: 'session',
   secret,
-  resave:false,
-  saveUninitialized:true,
-  cookie:{
-      httpOnly:true,
-      expires:Date.now() + 1000*60*60*24*7,
-      maxAge:1000*60*60*24*7
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,           
+    secure: true,             
+    sameSite: 'none',        
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, 
+    maxAge: 1000 * 60 * 60 * 24 * 7  
   }
-}
+};
+
 
 const corsOptions = {
   origin: "https://trade-tracker-r4xv.vercel.app",
