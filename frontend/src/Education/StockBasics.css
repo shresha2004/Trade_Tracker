@@ -1,0 +1,25 @@
+.container{
+    
+    font-family: Arial, sans-serif;
+}
+
+
+ .hvr{
+    transition: transform 0.3s ease,box-shadow 0.3s ease;
+    z-index: 1;
+  }
+
+ .hvr:hover{
+    transform:scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2)
+    
+  }
+
+  .pdf{
+    background-color: #9370DB !important;
+   color: white !important;
+  }
+.pdf:hover{
+    background-color: #f2f0f6 !important;
+    color: black !important;
+}

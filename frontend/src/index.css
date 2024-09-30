@@ -1,0 +1,157 @@
+html{
+  scroll-behavior: smooth;
+}
+
+.backGroundImage {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.741), rgba(255, 255, 255, 0.741)),
+                    url("https://res.cloudinary.com/dtyu88isr/image/upload/v1724525581/TradingJournal/sqvsmntavjhgi5yjho0f.png");
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: auto;
+  min-height: 100vh; 
+ 
+}
+
+.portfolioImage {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.741), rgba(255, 255, 255, 0.741)),
+                    url("https://res.cloudinary.com/dtyu88isr/image/upload/v1725299900/TradingJournal/d3ddreys4bu05giy7yql.avif");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: auto;
+  background-position: center center; 
+}
+
+.input-group-text{
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+}
+
+.input-group-text{
+  font-size: 1rem;
+}
+
+.card-custom:hover {
+  transform: scale(1.05);
+  box-shadow:0 4px 8px rgba(0,0,0,0.2) ;
+}
+.card-custom{
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+
+.barcss{
+  width: 100%;
+  height: 500px;
+}
+.curlyText{
+  font-family: "Playwrite CU", cursive;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.tradingJournalFont{
+  font-family: "New Amsterdam", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.custom-analytics{
+  box-shadow:0 4px 8px rgba(0,0,0,0.2) ;
+}
+
+.hover-area{
+  
+background-color: lightgray;
+position: relative;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.hover-content{
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left:100px;
+  
+  /* width: 250px; */
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-align: center;
+  z-index: 1;
+  height: 100px;
+  white-space: nowrap;
+}
+
+.hover-area:hover .hover-content{
+  display: block;
+}
+
+.spinnerStyle{
+  position: fixed;
+  left: 50%;
+  top:50%;
+ transform: translate(-50%,-50%);
+ z-index: 1100;
+}
+
+.heroImg{
+ 
+  width: 600px;
+  height: 550px;
+  z-index: 101;
+
+}
+.heroBackground{
+  background-image: linear-gradient(rgba(255, 255, 255, 0.741), rgba(255, 255, 255, 0.741)),
+                    url("https://res.cloudinary.com/dtyu88isr/image/upload/v1726628195/TradingJournal/zsrxb9cgdgnbn5hcapfb.avif");
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: auto;
+  min-height: 100vh; 
+ 
+}
+
+.getStartedBtn {
+  background-color: #116a26; 
+  color: white; 
+  border: none;
+  padding: 12px 24px; 
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+
+  text-decoration: none;
+
+}
+
+.getStartedBtn:hover {
+  background-color: #218838; 
+}
+
+.heading{
+  color: #fcfcfc;
+  font-weight: bold;
+  font-size: x-large;
+  background-color: #116a26 !important;
+}
+.altercss{
+  color: #116a26;
+  text-decoration: underline;
+}
+.nav-bar-background{
+  background-color: #218838 !important;
+}
+.details{
+  box-shadow:0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+
+
+
+
+

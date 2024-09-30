@@ -1,0 +1,27 @@
+/* MovingText.css */
+
+.moving-text-container {
+    position: absolute;
+    top: 9%;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+
+  }
+  
+  .moving-text {
+    display: inline-block;
+    padding-right: 100%; 
+    animation: marquee 25s linear infinite;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color:red;
+  }
+  
+  @keyframes marquee {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
