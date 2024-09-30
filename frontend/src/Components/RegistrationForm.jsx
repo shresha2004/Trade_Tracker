@@ -11,7 +11,7 @@ const RegistrationForm = ({ closeRegisterForm }) => {
     e.preventDefault();
     try {
 
-      const response = await axios.post('http://localhost:4501/register', { email, password });
+      const response = await axios.post('https://trade-tracker-slgz.onrender.com/register', { email, password });
 
       setMessage(response.data);
     } catch (error) {
