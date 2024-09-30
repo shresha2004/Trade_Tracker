@@ -123,21 +123,6 @@ app.post('/login', (req, res, next) => {
  
 
 
-app.get('/login', async(req,res)=>{
-  try{
-   if(req.user.Email){
-    const user = await UserDetail.findOne({ Email: req.user.Email });
-  
-    return res.send(user)
-   }
-   else{
-    console.error("req.user.Email not found")
-    return res.send("User not found")
-   }
-  }catch(err){
-    return res.send('Error',err)
-  }
-})
 
 
 app.post('/TradeEntryForm', async (req, res) => {
