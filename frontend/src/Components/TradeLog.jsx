@@ -19,7 +19,7 @@ import TradeEntryForm from '../Components/TradeEntryForm';
    const fetchData=async()=>{
     try{
 
-        const response =await axios.get("http://localhost:4501/TradeEntryForm",{withCredentials:true});
+        const response =await axios.get("https://trade-tracker-slgz.onrender.com/TradeEntryForm",{withCredentials:true});
 
         setTrades(Array.isArray(response.data) ? response.data : [response.data]);
     }catch(err){
@@ -40,7 +40,7 @@ const imageView=(url)=>{
    const remove=async(id)=>{
     
 
-    const response=await axios.delete(`http://localhost:4501/TradeEntryForm/${id}`,id)
+    const response=await axios.delete(`https://trade-tracker-slgz.onrender.com/TradeEntryForm/${id}`,id)
 
     fetchData()
    }
