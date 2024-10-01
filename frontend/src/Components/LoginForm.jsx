@@ -14,7 +14,7 @@ const LoginForm = ({ closeLoginForm }) => {
     e.preventDefault();
     try {
 
-      const response = await axios.post('https://trade-tracker-slgz.onrender.com/login', { email, password },{ withCredentials: true });
+      const response = await axios.post('https://trade-tracker-krqm.vercel.app/login', { email, password },{ withCredentials: true });
 
       if (response.data === 'Login successful') {
         setIsAuthenticated(true);
