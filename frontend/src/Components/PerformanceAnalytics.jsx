@@ -27,7 +27,7 @@ const PerformanceAnalytics = () => {
     const fetchData = async () => {
         try {
 
-            const response = await axios.get('https://trade-tracker-slgz.onrender.com/TradeEntryForm',{withCredentials:true});
+            const response = await axios.get('https://trade-tracker-krqm.vercel.app/TradeEntryForm',{withCredentials:true});
 
             const fetchedTrades = Array.isArray(response.data) ? response.data : [response.data];
             setTrades(fetchedTrades);
