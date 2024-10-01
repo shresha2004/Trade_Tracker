@@ -48,7 +48,7 @@ const TradeEntryForm = ({ onAddTrade, onClose }) => {
 
     try {
 
-      const response = await axios.post("https://trade-tracker-slgz.onrender.com/TradeEntryForm", updatedFormData,{withCredentials:true});
+      const response = await axios.post("https://trade-tracker-krqm.vercel.app/TradeEntryForm", updatedFormData,{withCredentials:true});
 
       console.log(response.data);
     } catch (err) {
