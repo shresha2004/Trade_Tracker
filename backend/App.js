@@ -231,7 +231,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send("Express hearing😊");
+  res.render("index.ejs");
 });
 
 app.post("/",isAuthenticated, async (req, res) => {
