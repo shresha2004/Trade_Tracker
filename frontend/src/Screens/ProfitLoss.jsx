@@ -49,7 +49,7 @@ function ProfitLoss() {
         setLoading(true)
         try {
 
-            const result = await axios.get("https://trade-tracker-slgz.onrender.com/stocks",{ withCredentials: true });
+            const result = await axios.get("https://trade-tracker-krqm.vercel.app/stocks",{ withCredentials: true });
 
            
             setbackEndData(result.data);
@@ -79,7 +79,7 @@ function ProfitLoss() {
         try {
             
 
-            const response = await axios.post("https://trade-tracker-slgz.onrender.com/", { symbol, entryPrice, stopLoss, target, quantity },{ withCredentials: true });
+            const response = await axios.post("https://trade-tracker-krqm.vercel.app/", { symbol, entryPrice, stopLoss, target, quantity },{ withCredentials: true });
 
             setFlashMessage("Added successfully");
             setShowInputs(false);
@@ -127,7 +127,7 @@ function ProfitLoss() {
         try{
             console.log("From profit loss file",id)
 
-        await axios.delete(`https://trade-tracker-slgz.onrender.com/stocks/${id}`,id,{ withCredentials: true })
+        await axios.delete(`https://trade-tracker-krqm.vercel.app/stocks/${id}`,id,{ withCredentials: true })
 
       
         fetchData()
