@@ -11,7 +11,7 @@ const RegistrationForm = ({ closeRegisterForm }) => {
     e.preventDefault();
     try {
 
-      const response = await axios.post('https://trade-tracker-slgz.onrender.com/register', { email, password });
+      const response = await axios.post('https://trade-tracker-krqm.vercel.app/register', { email, password });
 
       setMessage(response.data);
     } catch (error) {
