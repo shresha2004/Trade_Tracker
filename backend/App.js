@@ -82,6 +82,16 @@ db.once("open", () => {
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  return res.status(401).send("Unauthorized");
+}
+
+
+
+
 app.post('/login', (req, res, next) => {
   passport.authenticate('local', async (err, user, info) => {
     if (err) {
@@ -128,7 +138,7 @@ app.post('/login', (req, res, next) => {
 
 
 
-app.post('/TradeEntryForm', async (req, res) => {
+app.post('/TradeEntryForm',isAuthenticated, async (req, res) => {
   try {
     const { date, type, instrument, tradeType, entryPrice, exitPrice, quantity, strategy, notes, beforeScreenshotUrl, afterScreenshotUrl } = req.body;
     if (!date || !type || !instrument || !tradeType || !entryPrice || !exitPrice || !quantity || !strategy) {
@@ -171,7 +181,7 @@ app.post('/TradeEntryForm', async (req, res) => {
 });
 
 
-app.get('/TradeEntryForm',async(req,res)=>{
+app.get('/TradeEntryForm',isAuthenticated, async(req,res)=>{
  
   try{
   if(!req.user.Email){
@@ -193,7 +203,7 @@ app.get('/TradeEntryForm',async(req,res)=>{
 })
 
 
-app.delete('/TradeEntryForm/:id', async(req,res)=>{
+app.delete('/TradeEntryForm/:id',isAuthenticated, async(req,res)=>{
   try{
   const id=req.params.id
  
@@ -224,7 +234,7 @@ app.get('/', (req, res) => {
   res.send("Express hearing😊");
 });
 
-app.post("/", async (req, res) => {
+app.post("/",isAuthenticated, async (req, res) => {
   try {
     if(!req.user.Email){
       console.error("Req.user.email not found")
@@ -252,7 +262,7 @@ app.post("/", async (req, res) => {
   }
 });
 
-app.get("/stocks", async (req, res) => {
+app.get("/stocks",isAuthenticated, async (req, res) => {
   try {
     const user= await UserDetail.findOne({Email: req.user.Email})
    
@@ -275,7 +285,7 @@ app.get("/stocks", async (req, res) => {
 });
 
 
-app.get('/SendJournal',async(req,res)=>{
+app.get('/SendJournal',isAuthenticated,async(req,res)=>{
  
   try{
     if(!req.user.Email){
@@ -295,7 +305,7 @@ app.get('/SendJournal',async(req,res)=>{
   }
 })
 
-app.delete('/stocks/:id',async(req,res)=>{
+app.delete('/stocks/:id',isAuthenticated,async(req,res)=>{
   try{
     const tradeId=req.params.id
     await Portfolio.findOneAndDelete({_id:tradeId})
