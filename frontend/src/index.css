@@ -74,7 +74,6 @@ position: relative;
   bottom: 0;
   left:100px;
   
-  /* width: 250px; */
   background-color: white;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -134,7 +133,7 @@ position: relative;
 }
 
 .heading{
-  color: #fcfcfc;
+  color: #fcfcfc !important;
   font-weight: bold;
   font-size: x-large;
   background-color: #116a26 !important;
@@ -148,6 +147,11 @@ position: relative;
 }
 .details{
   box-shadow:0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+.tcolor{
+  color:rgba(255, 255, 255, 0.904) !important;
+  border: 2px solid rgba(178, 222, 173, 0.728);
 }
 
 
