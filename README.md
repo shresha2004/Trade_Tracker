@@ -46,6 +46,8 @@ Welcome to **Trade Tracker**, a web application designed to help users track and
               
               frontend/src/
 contains React components and pages.
+
+
 **Backend**
             
            backend/ 
@@ -53,11 +55,13 @@ contains Express routes and middleware.
 **Public:** Static assets like images and styles.
 
 ## 🖼️ **Screenshots:**
-       Hero Page: ![image](https://github.com/user-attachments/assets/1e54f508-e72b-4375-8455-0b4fb6f40f93)
-       Learning Page: ![image](https://github.com/user-attachments/assets/d559eb8b-a6c2-4d21-b838-a42d1da8e93c)
+
+Hero Page: ![image](https://github.com/user-attachments/assets/1e54f508-e72b-4375-8455-0b4fb6f40f93)
+Learning Page: ![image](https://github.com/user-attachments/assets/d559eb8b-a6c2-4d21-b838-a42d1da8e93c)
+
 
 ## 🤝 **Contributing:**
-       Contributions are welcome! Feel free to fork the repo and submit a pull request.
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
 
 
