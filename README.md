@@ -56,15 +56,22 @@ contains Express routes and middleware.
 
 ## 🖼️ **Screenshots:**
 
-**Hero Page:** 
+## **Hero Page:** 
+
 ![image](https://github.com/user-attachments/assets/1e54f508-e72b-4375-8455-0b4fb6f40f93)
 
 
-**Learning Page:** ![image](https://github.com/user-attachments/assets/d559eb8b-a6c2-4d21-b838-a42d1da8e93c)
+## **Learning Page:**
 
-**Trading Journal:** ![image](https://github.com/user-attachments/assets/636a275c-d0c6-475e-b8aa-ab194af72623)
+![image](https://github.com/user-attachments/assets/d559eb8b-a6c2-4d21-b838-a42d1da8e93c)
 
-**Performance Analytics** ![image](https://github.com/user-attachments/assets/bd634df2-29bb-4546-8bef-598702ef7e14)
+## **Trading Journal:** 
+
+![image](https://github.com/user-attachments/assets/636a275c-d0c6-475e-b8aa-ab194af72623)
+
+## **Performance Analytics:** 
+
+![image](https://github.com/user-attachments/assets/bd634df2-29bb-4546-8bef-598702ef7e14)
 
 
 ## 🤝 **Contributing:**
