@@ -47,9 +47,12 @@ function ProfitLoss() {
 
     const fetchData = async () => {
         setLoading(true)
+        const email= localStorage.getItem('Email')
         try {
 
-            const result = await axios.get("https://trade-tracker-krqm.vercel.app/stocks",{ withCredentials: true });
+            const result = await axios.get("https://trade-tracker-krqm.vercel.app/stocks",{headers:{
+                'email':email
+            }},{ withCredentials: true });
 
            
             setbackEndData(result.data);
@@ -75,11 +78,11 @@ function ProfitLoss() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        const email=localStorage.getItem('Email')
         try {
             
 
-            const response = await axios.post("https://trade-tracker-krqm.vercel.app/", { symbol, entryPrice, stopLoss, target, quantity },{ withCredentials: true });
+            const response = await axios.post("https://trade-tracker-krqm.vercel.app/", { symbol, entryPrice, stopLoss, target, quantity,email },{ withCredentials: true });
 
             setFlashMessage("Added successfully");
             setShowInputs(false);
@@ -125,7 +128,7 @@ function ProfitLoss() {
 
     const removeTrade= async(id)=>{
         try{
-            console.log("From profit loss file",id)
+           
 
         await axios.delete(`https://trade-tracker-krqm.vercel.app/stocks/${id}`,id,{ withCredentials: true })
 
