@@ -17,27 +17,39 @@ Welcome to **Trade Tracker**, a web application designed to help users track and
 - **Deployment**: Vercel 🌐
 
 ## 🚀 **Getting Started**
-Project Live Link: 
+## Project Live Link: 
        https://trade-tracker-r4xv.vercel.app
 
      
-To get a local copy up and running, follow these simple steps:
+## To get a local copy up and running, follow these simple steps:
 
 ### **Prerequisites**
 - **Node.js** and **npm** should be installed on your machine.
 
 ### **Installation**
-1. **Clone the repo**  
+1) **Clone the repo**  
    ```bash
    git clone https://github.com/your-username/trade-tracker.git
 
-2) Install dependencies:"cd trade-tracker"
-                         "npm install"
-3) Set up environment variables:Create a .env file in the root directory and add the following:ALPHA_VANTAGE_API_KEY=your-api-key
-4) Run the application locally:"npm start"
+2) **Install dependencies:**
+   ```bash
+          cd trade-tracker
+          npm install
+4) **Set up environment variables:** Create a .env file in the root directory and add the following:
+   ```bash
+          ALPHA_VANTAGE_API_KEY=your-api-key
+6) **Run the application locally:**
+   ```bash
+          npm start
 
-📂 Project Structure
-Frontend: frontend/src/ contains React components and pages.
+## 📂 **Project Structure**
+
+          **Frontend:**
+           ```bash
+                     frontend/src/
+
+**Backend**
+contains React components and pages.
 Backend: backend/ contains Express routes and middleware.
 Public: Static assets like images and styles.
 
