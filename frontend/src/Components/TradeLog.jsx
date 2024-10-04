@@ -17,9 +17,12 @@ import TradeEntryForm from '../Components/TradeEntryForm';
     fetchData()
    },[])
    const fetchData=async()=>{
+    const email=localStorage.getItem("Email")
     try{
 
-        const response =await axios.get("https://trade-tracker-krqm.vercel.app/TradeEntryForm",{withCredentials:true});
+        const response =await axios.get("https://trade-tracker-krqm.vercel.app/TradeEntryForm",{headers:{
+          email:email
+        }},{withCredentials:true});
 
         setTrades(Array.isArray(response.data) ? response.data : [response.data]);
     }catch(err){
@@ -41,7 +44,7 @@ const imageView=(url)=>{
     
 
     const response=await axios.delete(`https://trade-tracker-krqm.vercel.app/TradeEntryForm/${id}`,id)
-
+    
     fetchData()
    }
 
