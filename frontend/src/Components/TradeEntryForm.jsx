@@ -22,6 +22,7 @@ const TradeEntryForm = ({ onAddTrade, onClose }) => {
     notes: '',
     beforeScreenshotUrl: '',
     afterScreenshotUrl: '',
+    email:''
   });
 
   const handleChange = (e) => {
@@ -36,7 +37,7 @@ const TradeEntryForm = ({ onAddTrade, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true)
-
+    const email=localStorage.getItem('Email')
     const beforeScreenshotUrl = await uploadImage(Files.beforeScreenshot);
     const afterScreenshotUrl = await uploadImage(Files.afterScreenshot);
 
@@ -44,11 +45,13 @@ const TradeEntryForm = ({ onAddTrade, onClose }) => {
       ...formData,
       beforeScreenshotUrl: beforeScreenshotUrl,
       afterScreenshotUrl: afterScreenshotUrl,
+      email:email
     };
 
     try {
+      
 
-      const response = await axios.post("https://trade-tracker-krqm.vercel.app/TradeEntryForm", updatedFormData,{withCredentials:true});
+      const response = await axios.post("https://trade-tracker-krqm.vercel.app/TradeEntryForm",updatedFormData,{withCredentials:true});
 
       console.log(response.data);
     } catch (err) {
