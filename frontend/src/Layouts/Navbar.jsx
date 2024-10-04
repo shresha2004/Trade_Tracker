@@ -50,7 +50,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg navbar-dark nav-bar-background bg-success justify-content-center">
         <div className="container-fluid">
 
-          <Link className="navbar-brand fw-bold" to="#">Trade Tracker</Link>
+          <Link className="navbar-brand btn  fw-bold tcolor curlyText" to="#">Trade Tracker</Link>
 
           <button className="navbar-toggler" type="button" onClick={toggleNavbar} data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
