@@ -17,7 +17,10 @@ Welcome to **Trade Tracker**, a web application designed to help users track and
 - **Deployment**: Vercel 🌐
 
 ## 🚀 **Getting Started**
+Project Live Link: 
+      ```bash  https://trade-tracker-r4xv.vercel.app/
 
+     
 To get a local copy up and running, follow these simple steps:
 
 ### **Prerequisites**
