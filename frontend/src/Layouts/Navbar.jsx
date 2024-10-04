@@ -33,13 +33,14 @@ function Navbar() {
   };
 
   const closeLoginForm = () => {
-    console.log("Close login form is called")
+    
     setShowLoginForm(false);
     navigate('/LandingPage');
   };
 
   const handleLogoutClick = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem('Email')
     localStorage.removeItem('isAuthenticated');
     navigate('/LandingPage'); 
   };
