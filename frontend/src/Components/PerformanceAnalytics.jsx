@@ -18,6 +18,7 @@ ChartJS.register(
 const PerformanceAnalytics = () => {
     const [trades, setTrades] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [requestSent,setRequestSent] =useState(false)
     const [error, setError] = useState(null);
     const [instrument, setInstrument] = useState([]);
     const [NetprofLoss, setNetProfLoss] = useState([]);
@@ -26,8 +27,12 @@ const PerformanceAnalytics = () => {
 
     const fetchData = async () => {
         try {
+            const email= localStorage.getItem('Email');
+           
 
-            const response = await axios.get('https://trade-tracker-krqm.vercel.app/TradeEntryForm',{withCredentials:true});
+            const response = await axios.get('https://trade-tracker-krqm.vercel.app/TradeEntryForm',{headers:{
+                'email':email
+            }},{withCredentials:true});
 
             const fetchedTrades = Array.isArray(response.data) ? response.data : [response.data];
             setTrades(fetchedTrades);
@@ -68,8 +73,9 @@ const PerformanceAnalytics = () => {
     };
 
     useEffect(() => {
-       
+       setRequestSent(true)
         fetchData();
+        setRequestSent(false)
     }, []);
     
     if (loading) {
