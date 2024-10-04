@@ -28,21 +28,18 @@ const store=new MongoStore({
   }
 })
 
-const sessionConfig = {
+const sessionConfig={
   store,
-  name: 'session',
+  name:'session',
   secret,
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: true,           
-    secure: true,             
-    sameSite: 'none',        
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, 
-    maxAge: 1000 * 60 * 60 * 24 * 7  
+  resave:false,
+  saveUninitialized:true,
+  cookie:{
+      httpOnly:true,
+      expires:Date.now() + 1000*60*60*24*7,
+      maxAge:1000*60*60*24*7
   }
-};
-
+}
 
 const corsOptions = {
   origin: "https://trade-tracker-r4xv.vercel.app",
@@ -58,6 +55,7 @@ app.use(express.urlencoded({ extended: true }));
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
@@ -84,17 +82,11 @@ db.once("open", () => {
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  return res.status(401).send("Unauthorized");
-}
-
 
 
 
 app.post('/login', (req, res, next) => {
+  
   passport.authenticate('local', async (err, user, info) => {
     if (err) {
       console.error("Error during authentication:", err);
@@ -140,19 +132,21 @@ app.post('/login', (req, res, next) => {
 
 
 
-app.post('/TradeEntryForm',isAuthenticated, async (req, res) => {
+
+app.post('/TradeEntryForm', async (req, res) => {
+  
   try {
-    const { date, type, instrument, tradeType, entryPrice, exitPrice, quantity, strategy, notes, beforeScreenshotUrl, afterScreenshotUrl } = req.body;
-    if (!date || !type || !instrument || !tradeType || !entryPrice || !exitPrice || !quantity || !strategy) {
+    const { date, type, instrument, tradeType, entryPrice, exitPrice, quantity, strategy, notes, beforeScreenshotUrl, afterScreenshotUrl,email } = req.body;
+    if (!date || !type || !instrument || !tradeType || !entryPrice || !exitPrice || !quantity || !strategy ) {
       return res.status(400).send("Missing required fields");
     }
   
-    if(!req.user.Email){
+    if(!email){
       console.error("req.user.Email not found")
       return res.status(401).send("Unauthorized")
     }
     
-    const user =await UserDetail.findOne({Email:req.user.Email})
+    const user =await UserDetail.findOne({Email:email})
 
     if(!user){
       console.error("User not found")
@@ -183,29 +177,35 @@ app.post('/TradeEntryForm',isAuthenticated, async (req, res) => {
 });
 
 
-app.get('/TradeEntryForm',isAuthenticated, async(req,res)=>{
- 
-  try{
-  if(!req.user.Email){
-    console.error("Req.user.emai not found")
-    return res.status(401).send("Unauthorized")
+
+app.get('/TradeEntryForm', async (req, res) => {
+  const email =  req.headers.email;
+  
+
+  try {
+      if (!email) {
+          console.error("Email not found in headers");
+          return res.status(401).send("Unauthorized");
+      }
+
+      const user = await UserDetail.findOne({ Email: email });
+      console.log(user)
+      if (!user) {
+          console.error("User not found");
+          return res.status(404).json({ error: "User not found" });
+      }
+
+      const journalEntries = await JournalSchema.find({ user: user._id });
+      res.json(journalEntries);
+  } catch (err) {
+      console.error("Server error:", err);
+      res.status(500).send('Server error');
   }
-  const user =await UserDetail.findOne({Email:req.user.Email})
-  if(!user){
-    console.error("User not found")
-    return res.status(404).json({error:"User not found"})
-  }
-  const j=await JournalSchema.find({user:user._id})
-  res.json(j)
-}catch(er){
-  console.error("Server error")
-  res.status(403).send('Server error')
-}
-
-})
+});
 
 
-app.delete('/TradeEntryForm/:id',isAuthenticated, async(req,res)=>{
+
+app.delete('/TradeEntryForm/:id', async(req,res)=>{
   try{
   const id=req.params.id
  
@@ -233,16 +233,16 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render("index.ejs");
+  res.render('index');
 });
 
-app.post("/",isAuthenticated, async (req, res) => {
+app.post("/", async (req, res) => {
   try {
-    if(!req.user.Email){
+    if(!req.body.email){
       console.error("Req.user.email not found")
       return res.status(401).send("Unauthorized")
     }
-    const user =await UserDetail.findOne({Email:req.user.Email})
+    const user =await UserDetail.findOne({Email:req.body.email})
     if(!user){
       console.error("User not found")
       return res.status(404).json({error:"User not found"})
@@ -264,11 +264,18 @@ app.post("/",isAuthenticated, async (req, res) => {
   }
 });
 
-app.get("/stocks",isAuthenticated, async (req, res) => {
+app.get("/stocks", async (req, res) => {
+  const email=req.headers.email;
+  console.log("From get stock:",email)
+
   try {
-    const user= await UserDetail.findOne({Email: req.user.Email})
-   
-    
+    if(!email){
+      res.status(401).send("Unauthorized")
+    }
+    const user= await UserDetail.findOne({Email:email})
+    if(!user){
+      res.status(404).send("User not found")
+    }
     const stocks = await Portfolio.find({user: user._id});
     const stocksInvestment = stocks.map(stock => ({
       symbol: stock.Symbol,
@@ -287,27 +294,9 @@ app.get("/stocks",isAuthenticated, async (req, res) => {
 });
 
 
-app.get('/SendJournal',isAuthenticated,async(req,res)=>{
- 
-  try{
-    if(!req.user.Email){
-      console.error("req.user not found")
-      return res.status(401).send("Unauthorized")
-    }
-    const user =await UserDetail.findOne({Email:req.user.Email})
-    if(!user){
-      console.error("User not found")
-      return res.status(404).json({error:"User not found"})
-    }
-  const journals=await JournalSchema.findOne({user:user._id})
-  res.json(journals)
-  }catch(err){
-    console.error(err)
-    res.status(500).json({err:err.message})
-  }
-})
 
-app.delete('/stocks/:id',isAuthenticated,async(req,res)=>{
+
+app.delete('/stocks/:id',async(req,res)=>{
   try{
     const tradeId=req.params.id
     await Portfolio.findOneAndDelete({_id:tradeId})
@@ -317,8 +306,8 @@ app.delete('/stocks/:id',isAuthenticated,async(req,res)=>{
   }
 })
 
+app.get('/favicon.ico', (req, res) => res.status(204));
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 
