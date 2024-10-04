@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../Contexts/AuthContext';
+import FlashMessage from './FlashMessage';
 
 const LoginForm = ({ closeLoginForm }) => {
   const [email, setEmail] = useState('');
@@ -17,9 +18,11 @@ const LoginForm = ({ closeLoginForm }) => {
       const response = await axios.post('https://trade-tracker-krqm.vercel.app/login', { email, password },{ withCredentials: true });
 
       if (response.data === 'Login successful') {
+        localStorage.setItem('Email',email)
+        
         setIsAuthenticated(true);
         setMessage('Login successful');
-        closeLoginForm();
+       
       } else {
         setMessage("Login failed");
       }
@@ -80,7 +83,7 @@ const LoginForm = ({ closeLoginForm }) => {
           <button type="submit" className="btn btn-success btn-block mt-3">Login</button>
         </form>
         <button type="button" onClick={handleClose} className="btn btn-secondary btn-block mt-3">Close</button>
-        {message && <p className="mt-3">{message}</p>}
+        <FlashMessage message={message} duration={1000} onClose={() =>  closeLoginForm()} />
       </div>
     </div>
   );
