@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Footer from "../Layouts/Footer";
 import Video from "../assets/HeroPageVideo.mp4";
-import { Link } from 'react-router-dom'; // Resolving the merge by keeping this import
+import { Link } from 'react-router-dom'; 
 
 const HeroPage = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
@@ -64,9 +64,8 @@ const HeroPage = () => {
                 <span className="navbar-toggler-icon"></span>
               </button>
 
-              {/* Collapsible Content */}
               <div className="collapse navbar-collapse" id="navbarContent">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav ">
                   <li className="nav-item">
                     <Link to="/" className="nav-link fw-bolder px-3 altercss ms-5 me-5">
                       Home
@@ -102,43 +101,41 @@ const HeroPage = () => {
             </div>
           </nav>
         </div>
+
         <div className="row mt-5">
-          <div className="col-sm-12 col-md-7">
-            <h1 className="curlyText text-center intro mt-5 mb-5">
+          <div className="col-md-7 order-md-1 order-1 text-center text-md-start">
+            <h1 className="curlyText intro mt-5 mb-5">
               Track, Learn, and Trade with Confidence
             </h1>
             <p className="fs-5 mt-5">
               Welcome to Trade Tracker – your ultimate tool for managing trades, analyzing performance, and staying on top of the market. Track your trades, upload charts, and gain insights to enhance your trading strategy. Stay organized, make informed decisions,
               and grow your portfolio with ease.
             </p>
-            <div className="mt-5 d-flex justify-content-center align-items-center">
-              <Link to="/LandingPage" className="getStartedBtn ">
+            <div className="mt-5 d-flex justify-content-center justify-content-md-start">
+              <Link to="/LandingPage" className="getStartedBtn">
                 Get Started
               </Link>
             </div>
-            <video className="mt-4 mb-5" src={Video} autoPlay loop muted />
+            <video className="mt-4 mb-5 w-100" src={Video} autoPlay loop muted />
           </div>
 
-          <div className="col-sm-12 col-md-5 position-relative">
+
+          <div className="col-md-5 order-md-2 order-2 text-center">
             <img
               src="https://res.cloudinary.com/dtyu88isr/image/upload/v1726460573/TradingJournal/aoljdijto93gz26owgjg.jpg"
               alt="bitcoin"
-              className="heroImg position-relative"
+              className="heroImg img-fluid"
             />
           </div>
         </div>
-        <div className="card">
-          <img
-            src="https://res.cloudinary.com/dtyu88isr/image/upload/v1726720576/TradingJournal/o1wvdzsoeyff1or2ct00.png"
-            className="card-img-top rounded details"
-            alt="Trade Image"
-          />
-        </div>
+
+       
+
         <section id="about">
           <div className="card mt-2 details">
             <div className="card-body">
               <h5 className="card-title">About</h5>
-              <h6 className="card-subtitle mb-2 text-body-secondary">About trade Tracker</h6>
+              <h6 className="card-subtitle mb-2 text-body-secondary">About Trade Tracker</h6>
               <p className="card-text">
                 Welcome to Trade Tracker – your comprehensive platform for tracking and analyzing stock market trades. Whether you're a seasoned trader or just starting out, our website is designed to help you maintain a detailed trading journal, analyze performance, and make informed decisions.
               </p>
@@ -149,13 +146,22 @@ const HeroPage = () => {
                 <li>Trade Journal: Record every trade, including key details like entry/exit points, strategy, and upload charts to document your decision-making process.</li>
                 <li>Performance Analytics: Visualize your trading performance with easy-to-understand charts and insights to help refine your strategies.</li>
                 <li>User-Friendly Interface: Simple, intuitive design allows you to focus on the markets rather than the tools.</li>
-                <li>
-                  Our goal is to provide traders with the tools they need to succeed in the fast-paced world of stock market trading. Start tracking your trades today and take your trading game to the next level!
-                </li>
+                <li>Our goal is to provide traders with the tools they need to succeed in the fast-paced world of stock market trading. Start tracking your trades today and take your trading game to the next level!</li>
               </ul>
             </div>
           </div>
         </section>
+
+
+         <div className="card my-4">
+          <img
+            src="https://res.cloudinary.com/dtyu88isr/image/upload/v1726720576/TradingJournal/o1wvdzsoeyff1or2ct00.png"
+            className="card-img-top rounded details img-fluid"
+            alt="Trade Image"
+          />
+        </div>
+
+
         <section id="service">
           <div className="card mt-3 details">
             <div className="card-body">
@@ -167,6 +173,8 @@ const HeroPage = () => {
             </div>
           </div>
         </section>
+
+  
         <section id="contact">
           <div className="card mt-3 mb-3 details">
             <div className="card-body">
