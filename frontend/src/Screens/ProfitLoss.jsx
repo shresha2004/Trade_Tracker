@@ -50,7 +50,7 @@ function ProfitLoss() {
         const email= localStorage.getItem('Email')
         try {
 
-            const result = await axios.get("http://localhost:4501/stocks",{headers:{
+            const result = await axios.get("https://trade-tracker-krqm.vercel.app/stocks",{headers:{
                 'email':email
             }},{ withCredentials: true });
 
@@ -82,7 +82,7 @@ function ProfitLoss() {
         try {
             
 
-            const response = await axios.post("http://localhost:4501/", { symbol, entryPrice, stopLoss, target, quantity,email },{ withCredentials: true });
+            const response = await axios.post("https://trade-tracker-krqm.vercel.app/", { symbol, entryPrice, stopLoss, target, quantity,email },{ withCredentials: true });
 
             setFlashMessage("Added successfully");
             setShowInputs(false);
@@ -130,7 +130,7 @@ function ProfitLoss() {
         try{
            
 
-        await axios.delete(`http://localhost:4501/stocks/${id}`,id,{ withCredentials: true })
+        await axios.delete(`https://trade-tracker-krqm.vercel.app/stocks/${id}`,id,{ withCredentials: true })
 
       
         fetchData()
