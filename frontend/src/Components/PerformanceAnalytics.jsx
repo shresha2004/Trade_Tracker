@@ -144,7 +144,7 @@ const PerformanceAnalytics = () => {
                 </div>
             </div>
           
-            <div className='col-lg-3 col-md-12   d-flex align-items-center'>
+            <div className='col-lg-3 col-md-12 mt-4   d-flex align-items-center'>
                 
                 <div className='card w-100'  >
                     <strong className="card-header text-center">Trade Analysis Report</strong>
