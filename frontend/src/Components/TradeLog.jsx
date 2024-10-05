@@ -20,7 +20,7 @@ import TradeEntryForm from '../Components/TradeEntryForm';
     const email=localStorage.getItem("Email")
     try{
 
-        const response =await axios.get("http://localhost:4501/TradeEntryForm",{headers:{
+        const response =await axios.get("https://trade-tracker-krqm.vercel.app/TradeEntryForm",{headers:{
           email:email
         }},{withCredentials:true});
 
@@ -43,7 +43,7 @@ const imageView=(url)=>{
    const remove=async(id)=>{
     
 
-    const response=await axios.delete(`http://localhost:4501/TradeEntryForm/${id}`,id)
+    const response=await axios.delete(`https://trade-tracker-krqm.vercel.app/TradeEntryForm/${id}`,id)
     
     fetchData()
    }
