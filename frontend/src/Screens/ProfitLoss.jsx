@@ -50,7 +50,7 @@ function ProfitLoss() {
         const email= localStorage.getItem('Email')
         try {
 
-            const result = await axios.get("https://trade-tracker-krqm.vercel.app/stocks",{headers:{
+            const result = await axios.get("http://localhost:4501/stocks",{headers:{
                 'email':email
             }},{ withCredentials: true });
 
@@ -82,7 +82,7 @@ function ProfitLoss() {
         try {
             
 
-            const response = await axios.post("https://trade-tracker-krqm.vercel.app/", { symbol, entryPrice, stopLoss, target, quantity,email },{ withCredentials: true });
+            const response = await axios.post("http://localhost:4501/", { symbol, entryPrice, stopLoss, target, quantity,email },{ withCredentials: true });
 
             setFlashMessage("Added successfully");
             setShowInputs(false);
@@ -130,7 +130,7 @@ function ProfitLoss() {
         try{
            
 
-        await axios.delete(`https://trade-tracker-krqm.vercel.app/stocks/${id}`,id,{ withCredentials: true })
+        await axios.delete(`http://localhost:4501/stocks/${id}`,id,{ withCredentials: true })
 
       
         fetchData()
@@ -140,19 +140,25 @@ function ProfitLoss() {
     }
 
     return (
-        <> <div className='portfolioImage'>
+        <div> <div className='portfolioImage'>
             <Navbar />
             {showLoginForm ? (
                 <LoginForm closeLoginForm={closeLoginForm} />
                
             ) : (
-                <>
+                <div>
                     <div className='mt-5 '>
                         <div className='row justify-content-center'>
-                              <div className='col-md-8 col-sm-12 '>
+                              <div className='col-md-8 '>
+                               <div className="col-sm-12 mb-2 me-2 d">
+
+                                <div className='ms-2'>
                      <BarChart data={backEndData}/>
                      </div>
-                         <div className='col-md-4 col-sm-8 '>
+                     </div>
+                     </div>
+                         <div className='col-md-4  '>
+                            <div className='col-sm-12 ms-3 me-3 '>
                         <div className="input-group mb-3">
                         <span className='input-group-text'>
                         <i className="bi bi-search"></i>
@@ -172,15 +178,9 @@ function ProfitLoss() {
                                 </div>
                                 </div>
                                 </div></>):(<></>)}
-                        
-                        
-                        
-                     
-                     
+
                     <FlashMessage message={flashMessage} duration={3000} onClose={() => setFlashMessage(null)} />
-             
-                    
-                    
+    
                
                     {stockData && (
                         <div>
@@ -279,10 +279,10 @@ function ProfitLoss() {
                         </div>
                     )}
                     </div>
-                    
+                    </div>
                      </div>
                      </div>
-                </>
+                </div>
             )}
             <Container>
                 <Row>
@@ -296,7 +296,7 @@ function ProfitLoss() {
             <Footer/>
             </div>
            
-        </>
+        </div>
     );
 }
 
