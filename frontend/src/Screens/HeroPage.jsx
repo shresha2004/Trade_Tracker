@@ -44,7 +44,7 @@ const HeroPage = () => {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-1">
         <div className="row mb-5">
           <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div className="container-fluid d-flex justify-content-between">
