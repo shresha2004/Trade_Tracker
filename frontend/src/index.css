@@ -1,6 +1,11 @@
 html{
   scroll-behavior: smooth;
 }
+body {
+  overflow-x: hidden; 
+  margin: 0;        
+  padding: 0;    
+}
 
 .backGroundImage {
   background-image: linear-gradient(rgba(255, 255, 255, 0.741), rgba(255, 255, 255, 0.741)),
@@ -41,8 +46,17 @@ html{
 
 .barcss{
   width: 100%;
-  height: 500px;
+  height: 400px;
 }
+
+@media (max-width:768px) {
+    .barcss{
+      height: 300px;
+    }
+  
+} 
+
+
 .curlyText{
   font-family: "Playwrite CU", cursive;
   font-optical-sizing: auto;
