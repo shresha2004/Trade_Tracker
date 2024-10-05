@@ -51,8 +51,8 @@ const TradingJournal = () => {
           <h1 className='text-center  tradingJournalFont col-12 mb-3'>-:Trading Journal:-<div className='curlyText'>Every trade is a lesson; every journal entry is growth.
             </div></h1>
             </div>
-        <div className='row justify-content-center ms-2 mt-3'>
-          <div className='mt-4 col-md-11'>
+        <div className='row justify-content-center ms-2 mt-3 me-2'>
+          <div className='mt-4 col-md-11 ms-1 me-1'>
           <TradeLog trades={trades} />
       </div>
       
